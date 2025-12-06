@@ -34,10 +34,18 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
     <div className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-200 group">
       {/* 이미지 영역 */}
       <div className="relative overflow-hidden">
-        {/* 흰색 플레이스홀더 이미지 */}
-        <div className="w-full h-48 bg-gray-100 flex items-center justify-center">
-          <span className="text-gray-300 text-sm">이미지</span>
-        </div>
+        {/* 상품 이미지 */}
+        {product.image ? (
+          <img
+            src={product.image}
+            alt={product.name}
+            className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-200"
+          />
+        ) : (
+          <div className="w-full h-48 bg-gray-100 flex items-center justify-center">
+            <span className="text-gray-300 text-sm">이미지</span>
+          </div>
+        )}
         
         {/* 배지들 */}
         {product.isOrganic && (

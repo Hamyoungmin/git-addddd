@@ -4,6 +4,7 @@ import { ShoppingCart, User, Menu, LogIn } from "lucide-react";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 // 농산물 쇼핑몰에 맞는 네비게이션 메뉴
 const navItems = [
@@ -21,6 +22,7 @@ interface HeaderProps {
 
 export function Header({ cartItemCount = 0 }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
@@ -36,15 +38,22 @@ export function Header({ cartItemCount = 0 }: HeaderProps) {
 
           {/* 데스크톱 네비게이션 */}
           <nav className="hidden md:flex items-center space-x-1">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-green-600 hover:bg-green-50 rounded-md transition-colors"
-              >
-                {item.name}
-              </Link>
-            ))}
+            {navItems.map((item) => {
+              const isActive = pathname === item.href;
+              return (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+                    isActive
+                      ? "bg-green-100 text-green-700"
+                      : "text-gray-700 hover:text-green-600 hover:bg-green-50"
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* 우측 메뉴 */}
@@ -86,16 +95,23 @@ export function Header({ cartItemCount = 0 }: HeaderProps) {
         {mobileMenuOpen && (
           <nav className="md:hidden py-4 border-t border-gray-100">
             <div className="flex flex-col space-y-1">
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-green-600 hover:bg-green-50 rounded-md transition-colors"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
+              {navItems.map((item) => {
+                const isActive = pathname === item.href;
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+                      isActive
+                        ? "bg-green-100 text-green-700"
+                        : "text-gray-700 hover:text-green-600 hover:bg-green-50"
+                    }`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                );
+              })}
               <hr className="my-2 border-gray-100" />
               <Link
                 href="/login"

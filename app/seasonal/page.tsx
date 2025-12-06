@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Header } from "@/components/Header";
 import { ProductGrid } from "@/components/ProductGrid";
 import { Product } from "@/components/ProductCard";
-import { Leaf } from "lucide-react";
 
 // 제철 농산물 데이터 (겨울 시즌 기준)
 const seasonalProducts: Product[] = [
@@ -103,16 +102,11 @@ export default function SeasonalPage() {
       {/* 페이지 헤더 */}
       <div className="bg-gradient-to-r from-green-50 to-teal-50 border-b border-green-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="flex items-center gap-3">
-            <div className="bg-green-500 p-3 rounded-full">
-              <Leaf className="h-8 w-8 text-white" />
-            </div>
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900">제철 농산물</h1>
-              <p className="text-gray-600 mt-1">
-                {getCurrentSeason()}에 가장 맛있는 제철 농산물을 만나보세요
-              </p>
-            </div>
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900">제철 농산물</h1>
+            <p className="text-gray-600 mt-1">
+              {getCurrentSeason()}에 가장 맛있는 제철 농산물을 만나보세요
+            </p>
           </div>
         </div>
       </div>

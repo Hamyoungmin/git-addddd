@@ -2,7 +2,6 @@
 
 import { useState, useMemo } from "react";
 import { Header } from "@/components/Header";
-import { FigmaBanner } from "@/components/FigmaBanner";
 import { CategoryFilter } from "@/components/CategoryFilter";
 import { ProductGrid } from "@/components/ProductGrid";
 import { Product } from "@/components/ProductCard";
@@ -14,7 +13,7 @@ const sampleProducts: Product[] = [
     name: "유기농 토마토 (1kg)",
     price: 8500,
     originalPrice: 10000,
-    image: "",
+    image: "/photo-1683008952375-410ae668e6b9.jpg",
     category: "vegetables",
     rating: 4.8,
     reviewCount: 156,
@@ -26,7 +25,7 @@ const sampleProducts: Product[] = [
     id: "2",
     name: "신선한 당근 (500g)",
     price: 3500,
-    image: "",
+    image: "/photo-1663441041574-274dc77d17bb.jpg",
     category: "vegetables",
     rating: 4.5,
     reviewCount: 89,
@@ -38,7 +37,7 @@ const sampleProducts: Product[] = [
     name: "국산 사과 (2kg)",
     price: 12000,
     originalPrice: 15000,
-    image: "",
+    image: "/photo-1623815242959-fb20354f9b8d.jpg",
     category: "fruits",
     rating: 4.9,
     reviewCount: 234,
@@ -49,7 +48,7 @@ const sampleProducts: Product[] = [
     id: "4",
     name: "유기농 상추 (200g)",
     price: 2800,
-    image: "",
+    image: "/photo-1572775146189-b792cd0b76ba.jpg",
     category: "vegetables",
     rating: 4.6,
     reviewCount: 67,
@@ -62,7 +61,7 @@ const sampleProducts: Product[] = [
     name: "혼합 과일 바구니",
     price: 25000,
     originalPrice: 30000,
-    image: "",
+    image: "/photo-1692071096134-4e5e0a85bef0.jpg",
     category: "fruits",
     rating: 4.7,
     reviewCount: 123,
@@ -73,7 +72,7 @@ const sampleProducts: Product[] = [
     id: "6",
     name: "농장 직송 채소 세트",
     price: 18000,
-    image: "",
+    image: "/photo-1535821471350-14a8dc72a66c.jpg",
     category: "vegetables",
     rating: 4.8,
     reviewCount: 201,
@@ -137,9 +136,6 @@ export default function Home() {
     <div className="min-h-screen bg-gray-50">
       {/* 헤더 */}
       <Header cartItemCount={cartItems.length} />
-
-      {/* Figma Make 배너 */}
-      <FigmaBanner />
 
       {/* 카테고리 필터 + 검색 */}
       <CategoryFilter
